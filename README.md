@@ -1,2 +1,2 @@
-# python_projects
-Learning Python
+# Learning Python
+- BSc. Data Science
