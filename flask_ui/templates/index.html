@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+	<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
+
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
@@ -9,8 +13,9 @@
 	</div>
 </div>
 <div class="flex justify-center p-4 w-screen">	
-	<form class="flex flex-col">
+	<form class="flex flex-col flex-wrap">
 		<input class="p-2 w-[50rem] shadow shadow-gray-300 rounded bg-gray-700 hover:border-gray-300 text-gray-300" id="target-emails" placeholder="Enter target email addresses separated by commas..." />
+		<input class="p-2 w-[50rem] mt-4 shadow shadow-gray-300 rounded bg-gray-700 hover:border-gray-300 text-gray-300" id="email-subject" placeholder="Enter email subject here..." />
 		<textarea class="p-2 w-[50rem] h-40 mt-4 shadow shadow-gray-300 rounded bg-gray-700 hover:border-gray-300 text-gray-300" id="email-body" placeholder="Enter email body here..."></textarea>
 		<button class="mt-4 p-2 w-32 bg-gray-700 rounded hover:bg-gray-600 text-gray-300 shadow shadow-gray-300 justify-start" id="send-emails-btn">Send Emails</button>
 	</form>

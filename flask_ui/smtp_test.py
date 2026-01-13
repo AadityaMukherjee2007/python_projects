@@ -3,9 +3,9 @@ import os, smtplib
 
 load_dotenv()
 cred = os.getenv("PASS", "default_pass")
-print(cred)
+# print(cred)
 
-from_add = "aaditya.mukherjee2007@gmail.com"
+from_add = "aaditya.mukherjee2019@gmail.com"
 to_add = "aaditya.mukherjee2007@gmail.com"
 msg = "This is a test message"
 
