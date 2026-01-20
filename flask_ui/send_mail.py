@@ -41,3 +41,6 @@ def send_email(sender="<EMAIL>", recipients=[], html_template=""):
             sender_email, receiver_email, msg.as_string()
         )
         print("Email sent successfully!")
+
+if __name__ == "__main__":
+    send_email(sender=from_add, recipients=to_add, html_template=html)
