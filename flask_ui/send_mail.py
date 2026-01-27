@@ -8,7 +8,7 @@ load_dotenv()
 from_add = os.getenv("GMAIL", "...")
 from_cred = os.getenv("PASS", "...")
 
-to_add = ["aaditya.mukherjee2007@gmail.com"]
+to_add = ["aaditya.mukherjee2007@gmail.com", "maverk.muhammad@gmail.com"]
 
 smtp_server = "smtp.gmail.com"
 port = 465  # For SSL
