@@ -8,7 +8,10 @@ load_dotenv()
 from_add = os.getenv("GMAIL", "...")
 from_cred = os.getenv("PASS", "...")
 
-to_add = ["aaditya.mukherjee2007@gmail.com", "maverk.muhammad@gmail.com"]
+to_add = [
+    "aaditya.mukherjee2007@gmail.com", 
+    # "maverk.muhammad@gmail.com"
+]
 
 smtp_server = "smtp.gmail.com"
 port = 465  # For SSL
@@ -25,22 +28,30 @@ html = """
 </html>
 """
 
-def send_email(sender="<EMAIL>", recipients=[], html_template=""):
+def send_email(sender=from_add, recipients="", subject="", message="", html_template=""):
+    # Ensure recipients is properly formatted
+    if isinstance(recipients, list):
+        recipients_str = ','.join(recipients)
+        recipients_list = recipients
+    else:
+        recipients_str = recipients
+        recipients_list = [r.strip() for r in recipients.split(',') if r.strip()]
+    
     msg = MIMEMultipart("alternative")
-    msg['Subject'] = "Test Email from SMTP"
+    msg['Subject'] = subject
     msg['From'] = sender
-    msg['To'] = ", ".join(recipients) if len(recipients) != 1 else recipients[0]
+    msg['To'] = recipients_str
     msg.attach(MIMEText(
-        html if not html_template else html_template, "html"
+        html_template if html_template else message, "html"
     ))
 
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(
-            sender_email, receiver_email, msg.as_string()
+            sender_email, recipients_list, msg.as_string()
         )
-        print("Email sent successfully!")
+        print(f"Email sent successfully to {len(recipients_list)} recipient(s)!")
 
 if __name__ == "__main__":
     send_email(sender=from_add, recipients=to_add, html_template=html)
