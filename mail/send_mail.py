@@ -10,7 +10,8 @@ from_cred = os.getenv("PASS", "...")
 
 to_add = [
     "aaditya.mukherjee2007@gmail.com", 
-    # "maverk.muhammad@gmail.com"
+    "aaditya.mukherjee2007+1@gmail.com",
+    "aaditya.mukherjee2007+2@gmail.com"
 ]
 
 smtp_server = "smtp.gmail.com"
